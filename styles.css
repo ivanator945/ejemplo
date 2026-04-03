@@ -1,44 +1,133 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  background-size: 200% 200%;
+  animation: gradientMove 10s ease infinite;
 }
 
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* CARD */
 .card {
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  width: 300px;
+  width: 340px;
+  padding: 30px;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
   text-align: center;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  color: white;
+
+  animation: fadeIn 0.6s ease;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TITULO */
+.card h2 {
+  margin-bottom: 20px;
+}
+
+/* INPUTS */
 input {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin: 10px 0;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+
+  border: none;
+  border-radius: 10px;
+
+  outline: none;
+  font-size: 14px;
+
+  transition: 0.3s;
 }
 
+/* efecto focus */
+input:focus {
+  transform: scale(1.03);
+  box-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+/* BOTONES */
 button {
   width: 100%;
-  padding: 10px;
-  background: #667eea;
+  padding: 12px;
+
   border: none;
+  border-radius: 10px;
+
+  background: linear-gradient(135deg, #ff7eb3, #ff758c);
   color: white;
-  border-radius: 8px;
+  font-weight: bold;
   cursor: pointer;
-  margin-top: 10px;
+
+  transition: 0.3s;
 }
 
+/* hover botón */
 button:hover {
-  background: #5a67d8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* enlaces */
+a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* MENSAJE */
+#msg {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* MENU */
+.menu {
+  margin-top: 20px;
 }
 
 .menu button {
   margin-top: 10px;
+}
+
+/* LISTA USUARIOS */
+ul {
+  list-style: none;
+  margin-top: 15px;
+}
+
+li {
+  background: rgba(255,255,255,0.2);
+  margin: 5px 0;
+  padding: 8px;
+  border-radius: 8px;
 }
