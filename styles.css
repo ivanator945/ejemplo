@@ -1,36 +1,44 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f0f2f5;
+  background: linear-gradient(135deg, #667eea, #764ba2);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-.login-container {
+.card {
   background: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 25px;
+  border-radius: 15px;
   width: 300px;
   text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 input {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
 
 button {
   width: 100%;
   padding: 10px;
-  background: #007bff;
-  color: white;
+  background: #667eea;
   border: none;
+  color: white;
+  border-radius: 8px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 button:hover {
-  background: #0056b3;
+  background: #5a67d8;
+}
+
+.menu button {
+  margin-top: 10px;
 }

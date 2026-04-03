@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>Login</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="login-container">
-    <h2>Iniciar Sesión</h2>
+<div class="card">
+  <h2>Iniciar sesión</h2>
 
-    <form id="loginForm">
-      <input type="text" id="username" placeholder="Usuario" required>
-      <input type="password" id="password" placeholder="Contraseña" required>
+  <input type="text" id="username" placeholder="Usuario">
+  <input type="password" id="password" placeholder="Contraseña">
 
-      <button type="submit">Entrar</button>
-    </form>
+  <button onclick="login()">Entrar</button>
 
-    <p id="mensaje"></p>
-  </div>
+  <p>No tienes cuenta? <a href="register.html">Regístrate</a></p>
+  <p id="msg"></p>
+</div>
 
-  <script src="script.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

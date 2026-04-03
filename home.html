@@ -2,29 +2,21 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Home</title>
+  <title>Panel</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>Bienvenido 👋</h1>
+<div class="card">
+  <h2>Bienvenido 👋</h2>
   <p id="user"></p>
 
-  <button onclick="logout()">Cerrar sesión</button>
+  <div class="menu">
+    <button onclick="goUsers()">Usuarios guardados</button>
+    <button onclick="logout()">Cerrar sesión</button>
+  </div>
+</div>
 
-  <script>
-    // Proteger acceso
-    if (localStorage.getItem("logged") !== "true") {
-      window.location.href = "index.html";
-    }
-
-    document.getElementById("user").textContent =
-      "Usuario: " + localStorage.getItem("user");
-
-    function logout() {
-      localStorage.clear();
-      window.location.href = "index.html";
-    }
-  </script>
-
+<script src="app.js"></script>
 </body>
 </html>
