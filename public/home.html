@@ -2,16 +2,19 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Usuarios</title>
+  <title>Panel</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="loadHome()">
 
 <div class="card">
-  <h2>Usuarios registrados</h2>
-  <ul id="userList"></ul>
+  <h2>Dashboard 🚀</h2>
 
-  <button onclick="goHome()">Volver</button>
+  <p id="user"></p>
+
+  <div id="dashboard"></div>
+
+  <button onclick="logout()">Cerrar sesión</button>
 </div>
 
 <script src="app.js"></script>
