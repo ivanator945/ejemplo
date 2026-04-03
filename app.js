@@ -1,30 +1,3 @@
-// LOGIN
-async function login() {
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
-
-  const res = await fetch("/api/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ username, password })
-  });
-
-  const data = await res.json();
-
-  if (!res.ok) {
-    document.getElementById("msg").textContent = data.msg;
-    return;
-  }
-
-  localStorage.setItem("user", data.user);
-  localStorage.setItem("role", data.role);
-
-  window.location.href = "home.html";
-}
-
-// REGISTER
 async function register() {
   const username = document.getElementById("newUser").value;
   const password = document.getElementById("newPass").value;
@@ -37,7 +10,23 @@ async function register() {
     body: JSON.stringify({ username, password })
   });
 
-  const data = await res.json();
+  let data;
 
-  document.getElementById("msg").textContent = data.msg;
+  try {
+    data = await res.json();
+  } catch (e) {
+    console.error("Error leyendo JSON");
+    return;
+  }
+
+  const msg = document.getElementById("msg");
+
+  if (!res.ok) {
+    msg.textContent = data.msg;
+    msg.style.color = "red";
+    return;
+  }
+
+  msg.textContent = data.msg;
+  msg.style.color = "green";
 }
