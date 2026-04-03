@@ -4,47 +4,48 @@ const path = require("path");
 
 const app = express();
 app.use(express.json());
-app.use(express.static("public"));
 
 const FILE = path.join(__dirname, "users.json");
 
-// Leer usuarios
+// ===== SERVIR HTML MANUAL =====
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
+app.get("/register", (req, res) => {
+  res.sendFile(path.join(__dirname, "register.html"));
+});
+
+app.get("/home", (req, res) => {
+  res.sendFile(path.join(__dirname, "home.html"));
+});
+
+// ===== USERS =====
 function getUsers() {
-  const data = fs.readFileSync(FILE);
-  return JSON.parse(data);
+  return JSON.parse(fs.readFileSync(FILE));
 }
 
-// Guardar usuarios
 function saveUsers(users) {
   fs.writeFileSync(FILE, JSON.stringify(users, null, 2));
 }
 
-// REGISTRO
+// ===== REGISTER =====
 app.post("/register", (req, res) => {
   const { username, password } = req.body;
 
   let users = getUsers();
 
-  // Validar usuario existente
-  const exists = users.find(u => u.username === username);
-
-  if (exists) {
+  if (users.find(u => u.username === username)) {
     return res.status(400).json({ msg: "Usuario ya existe" });
   }
 
-  // Añadir usuario
-  users.push({
-    username,
-    password,
-    role: "user"
-  });
-
+  users.push({ username, password, role: "user" });
   saveUsers(users);
 
-  res.json({ msg: "Usuario creado correctamente ✔" });
+  res.json({ msg: "Usuario creado ✔" });
 });
 
-// LOGIN
+// ===== LOGIN =====
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
 
@@ -65,6 +66,6 @@ app.post("/login", (req, res) => {
   });
 });
 
-app.listen(3000, () =>
-  console.log("Servidor en http://localhost:3000")
-);
+app.listen(3000, () => {
+  console.log("Servidor en http://localhost:3000");
+});
